@@ -4,26 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/material_dynamic_neutral_variant0"
     android:orientation="vertical"
-    android:background="@color/design_default_color_secondary_variant"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textView14"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Workspace"
         android:textAlignment="center"
+        android:textColor="#ffffff"
         android:textSize="34sp" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:layout_marginTop="15dp"
         android:text="Listado de Tareas"
         android:textAlignment="center"
-        android:textSize="20sp"
-        android:layout_marginTop="15dp"/>
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
     <TableLayout
         android:layout_width="wrap_content"
@@ -43,6 +45,7 @@
                 android:layout_marginRight="45dp"
                 android:text="Titulo"
                 android:textAlignment="textStart"
+                android:textColor="@color/white"
                 android:textSize="24sp" />
 
             <TextView
@@ -52,6 +55,7 @@
                 android:layout_marginRight="45dp"
                 android:text="Fecha"
                 android:textAlignment="textStart"
+                android:textColor="@color/white"
                 android:textSize="24sp" />
 
             <TextView
@@ -60,55 +64,60 @@
                 android:layout_height="wrap_content"
                 android:text="descripción"
                 android:textAlignment="textStart"
+                android:textColor="@color/white"
                 android:textSize="24sp" />
         </TableRow>
     </TableLayout>
 
-    <ScrollView
-        android:id="@+id/Consulta"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="479dp">
+        android:layout_height="489dp">
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/titulomaintxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:text="loza primer piso" />
+                android:layout_weight="1"
+                android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/fechamaintxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="35dp"
-                android:text="30/09/2023" />
+                android:layout_weight="1"
+                android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView16"
+                android:id="@+id/descripcionmaintxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="el trabajo consiste en tener la loza del primer piso" />
-        </TableRow>
-    </ScrollView>
+                android:layout_weight="1"
+                android:text="TextView" />
+        </LinearLayout>
+    </androidx.recyclerview.widget.RecyclerView>
 
     <TableRow
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <Button
             android:id="@+id/btnAdd"
             android:layout_width="205dp"
             android:layout_height="wrap_content"
-            android:text="Agregar" />
+            android:backgroundTint="#400C9B"
+            android:text="Agregar"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btnEditar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FF400C9B"
             android:text="Editar" />
     </TableRow>
 

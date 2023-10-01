@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/design_default_color_secondary_variant"
+    android:background="#000000"
     android:orientation="vertical"
     tools:context=".Registro">
 
@@ -16,7 +16,8 @@
         android:text="Registrarse"
         android:textAlignment="center"
         android:textSize="34sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="#ffffff"/>
 
     <EditText
         android:id="@+id/editTextText"
@@ -25,11 +26,13 @@
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:drawableLeft="@drawable/ic_stat_name"
-        android:drawableTint="#007A6F"
+        android:drawableTint="@color/white"
         android:ems="10"
         android:hint="Ingrese Nombre"
         android:inputType="text"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="#ECECEC"/>
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
@@ -38,11 +41,13 @@
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:drawableLeft="@drawable/email"
-        android:drawableTint="#007A6F"
+        android:drawableTint="#ffffff"
         android:ems="10"
         android:hint="Ingrese E-mail"
         android:inputType="textEmailAddress"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textColorHint="#ECECEC"/>
 
     <EditText
         android:id="@+id/editTextTextPassword"
@@ -51,11 +56,13 @@
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:drawableLeft="@drawable/password"
-        android:drawableTint="#007A6F"
+        android:drawableTint="#ffffff"
         android:ems="10"
         android:hint="Ingrese contraseña"
         android:inputType="textPassword"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textColorHint="#ECECEC"/>
 
     <EditText
         android:id="@+id/editTextTextPassword2"
@@ -64,11 +71,13 @@
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:drawableLeft="@drawable/password"
-        android:drawableTint="#007A6F"
+        android:drawableTint="#ffffff"
         android:ems="10"
         android:hint="Repita la contraseña"
         android:inputType="textPassword"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textColorHint="#ECECEC"/>
 
     <TableLayout
         android:layout_width="wrap_content"
@@ -81,10 +90,10 @@
             android:layout_height="63dp">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btncrearperfil"
                 android:layout_width="154dp"
                 android:layout_height="match_parent"
-                android:backgroundTint="#007A6F"
+                android:backgroundTint="#FF400C9B"
                 android:text="Crear Perfil" />
 
             <Button
@@ -92,7 +101,7 @@
                 android:layout_width="172dp"
                 android:layout_height="59dp"
                 android:layout_marginLeft="20dp"
-                android:backgroundTint="#007A6F"
+                android:backgroundTint="#FF400C9B"
                 android:text="Volver al Menú" />
         </TableRow>
     </TableLayout>

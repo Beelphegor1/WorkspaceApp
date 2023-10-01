@@ -8,18 +8,20 @@ import android.view.View;
 import android.widget.Button;
 
 public class Editar extends AppCompatActivity {
-private Button Back1;
+private Button btnback1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar);
-        Button Back1 = findViewById(R.id.Back1);
-        Back1.setOnClickListener(new View.OnClickListener() {
+        btnback1 = findViewById(R.id.btnback1);
+
+        btnback1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Intent intent = new Intent(Editar.this,MainActivity.class);
                 startActivity(intent);
             }
         });
+
     }
 }
