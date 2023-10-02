@@ -30,9 +30,10 @@
         android:ems="10"
         android:hint="Ingrese Nombre"
         android:inputType="text"
+        android:minHeight="48dp"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textColorHint="#ECECEC"/>
+        android:textColorHint="#ECECEC" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
@@ -45,9 +46,10 @@
         android:ems="10"
         android:hint="Ingrese E-mail"
         android:inputType="textEmailAddress"
+        android:minHeight="48dp"
         android:textAlignment="center"
         android:textColor="#ffffff"
-        android:textColorHint="#ECECEC"/>
+        android:textColorHint="#ECECEC" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
@@ -60,9 +62,10 @@
         android:ems="10"
         android:hint="Ingrese contraseña"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         android:textAlignment="center"
         android:textColor="#ffffff"
-        android:textColorHint="#ECECEC"/>
+        android:textColorHint="#ECECEC" />
 
     <EditText
         android:id="@+id/editTextTextPassword2"
@@ -75,9 +78,10 @@
         android:ems="10"
         android:hint="Repita la contraseña"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         android:textAlignment="center"
         android:textColor="#ffffff"
-        android:textColorHint="#ECECEC"/>
+        android:textColorHint="#ECECEC" />
 
     <TableLayout
         android:layout_width="wrap_content"

@@ -97,19 +97,22 @@
                 android:id="@+id/Titulotxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="#ffffff"/>
 
             <TextView
                 android:id="@+id/fechatxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="#ffffff"/>
 
             <TextView
                 android:id="@+id/descripciontxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="#ffffff"/>
         </LinearLayout>
 
     </androidx.recyclerview.widget.RecyclerView>

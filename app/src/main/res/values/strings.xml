@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Workspace2</string>
+    <string name="workspace">Workspace</string>
     <string-array name="Estado">
         <item>Pendiente</item>
         <item>Realizada</item>

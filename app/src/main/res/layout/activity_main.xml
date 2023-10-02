@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/material_dynamic_neutral_variant0"
+    android:backgroundTint="@color/black"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -12,10 +13,10 @@
         android:id="@+id/textView14"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Workspace"
+        android:text="@string/workspace"
         android:textAlignment="center"
         android:textColor="#ffffff"
-        android:textSize="34sp" />
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/textView7"

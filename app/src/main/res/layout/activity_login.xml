@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/design_default_color_secondary_variant"
+    android:background="@color/material_dynamic_neutral0"
     tools:context=".MainActivity">
 
     <Button
@@ -12,7 +12,7 @@
         android:layout_width="201dp"
         android:layout_height="65dp"
         android:layout_marginTop="80dp"
-        android:backgroundTint="@color/design_default_color_on_secondary"
+        android:backgroundTint="#FF400C9B"
         android:text="Ingresar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         android:id="@+id/btnregistro"
         android:layout_width="201dp"
         android:layout_height="65dp"
-        android:backgroundTint="@color/design_default_color_on_secondary"
+        android:backgroundTint="#FF400C9B"
         android:text="Registrarse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +41,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usertxt" />
+        app:layout_constraintTop_toBottomOf="@+id/usertxt"
+        android:textColorHint="#ECECEC"/>
 
     <EditText
         android:id="@+id/usertxt"
@@ -54,7 +55,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColorHint="#ECECEC"/>
 
     <TextView
         android:id="@+id/textView"
@@ -64,6 +66,8 @@
         android:text="Workspace"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,6 +80,7 @@
         android:layout_marginTop="4dp"
         android:text="bienvenido "
         android:textAlignment="center"
+        android:textColor="#ffffff"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -89,6 +94,7 @@
         android:layout_marginTop="32dp"
         android:text="porfavor ingrese sus datos"
         android:textAlignment="center"
+        android:textColor="#ffffff"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
