@@ -12,15 +12,14 @@
         android:layout_width="127dp"
         android:layout_height="54dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="72dp"
         android:backgroundTint="#FF400C9B"
         android:text="Guardar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/Estado"
-        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintHorizontal_bias="0.211"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Estado"
-        app:layout_constraintVertical_bias="0.333"
+        app:layout_constraintVertical_bias="0.436"
         tools:ignore="HardcodedText" />
 
     <Button
@@ -28,12 +27,12 @@
         android:layout_width="128dp"
         android:layout_height="53dp"
         android:layout_marginStart="84dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#FF400C9B"
         android:text="Eliminar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintHorizontal_bias="0.289"
         app:layout_constraintStart_toEndOf="@+id/button3"
         tools:ignore="HardcodedText" />
 
@@ -41,13 +40,13 @@
         android:id="@+id/Estado"
         android:layout_width="212dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="216dp"
+        android:layout_marginBottom="112dp"
         android:backgroundTint="#ffffff"
         android:entries="@array/Estado"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.08"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView13"
@@ -79,8 +78,9 @@
         tools:ignore="HardcodedText" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="410dp"
-        android:layout_height="358dp"
+        android:id="@+id/recyclerView"
+        android:layout_width="412dp"
+        android:layout_height="230dp"
         app:layout_constraintBottom_toTopOf="@+id/Estado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -98,23 +98,61 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff" />
 
             <TextView
                 android:id="@+id/fechatxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff" />
 
             <TextView
                 android:id="@+id/descripciontxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff" />
         </LinearLayout>
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <EditText
+        android:id="@+id/editTextText4"
+        android:layout_width="386dp"
+        android:layout_height="87dp"
+        android:layout_marginBottom="44dp"
+        android:ems="10"
+        android:hint="Nueva Descripcion"
+        android:inputType="text"
+        android:textColor="#ffffff"
+        android:textColorHint="#ECECEC"
+        app:layout_constraintBottom_toTopOf="@+id/Estado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="151dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="20dp"
+        android:text="Edite el texto"
+        android:textColor="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="84dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="12dp"
+        android:text="Estado"
+        android:textColor="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

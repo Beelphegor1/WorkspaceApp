@@ -8,27 +8,15 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btningresar"
-        android:layout_width="201dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="80dp"
-        android:backgroundTint="#FF400C9B"
-        android:text="Ingresar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
-
-    <Button
         android:id="@+id/btnregistro"
         android:layout_width="201dp"
         android:layout_height="65dp"
+        android:layout_marginBottom="108dp"
         android:backgroundTint="#FF400C9B"
         android:text="Registrarse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btningresar"
-        app:layout_constraintVertical_bias="0.259" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
@@ -99,4 +87,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/btningresar"
+        android:layout_width="201dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="84dp"
+        android:backgroundTint="#FF400C9B"
+        android:text="Ingresar"
+        app:layout_constraintBottom_toTopOf="@+id/btnregistro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
