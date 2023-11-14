@@ -13,3 +13,30 @@
 .externalNativeBuild
 .cxx
 local.properties
+# Compiled files
+*.class
+*.jar
+*.war
+*.ear
+*.apk
+*.dex
+
+# Log files
+*.log
+
+# Android Studio
+.idea/
+.gradle/
+build/
+
+# User-specific files
+*.suo
+*.user
+*.sln
+*.swp
+
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+
+# macOS
