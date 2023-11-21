@@ -19,18 +19,18 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/userpass"
         android:layout_width="250dp"
         android:layout_height="48dp"
         android:layout_marginTop="36dp"
         android:ems="10"
         android:hint="contraseña"
         android:inputType="textPassword"
+        android:textColorHint="#ECECEC"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usertxt"
-        android:textColorHint="#ECECEC"/>
+        app:layout_constraintTop_toBottomOf="@+id/usertxt" />
 
     <EditText
         android:id="@+id/usertxt"
@@ -38,13 +38,13 @@
         android:layout_height="49dp"
         android:layout_marginTop="188dp"
         android:ems="10"
-        android:hint="nombre de usuario"
+        android:hint="correo de usuario"
         android:inputType="text"
+        android:textColorHint="#ECECEC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColorHint="#ECECEC"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -98,6 +98,6 @@
         app:layout_constraintBottom_toTopOf="@+id/btnregistro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/userpass"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

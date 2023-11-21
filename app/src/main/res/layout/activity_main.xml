@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -28,98 +29,56 @@
         android:textColor="@color/white"
         android:textSize="20sp" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/titulomaintxt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Titulo"/>
+
+        <TextView
+            android:id="@+id/fechamaintxt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Fecha"/>
+
+        <TextView
+            android:id="@+id/descripcionmaintxt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Descripción"/>
+
     <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TableRow
-            android:layout_width="355dp"
-            android:layout_height="83dp"
-            android:layout_gravity="center">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="205dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="45dp"
-                android:text="Titulo"
-                android:textAlignment="textStart"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
+                android:backgroundTint="#400C9B"
+                android:text="Agregar"
+                android:textColor="@color/white" />
 
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btnEditar"
+                android:layout_width="206dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="45dp"
-                android:text="Fecha"
-                android:textAlignment="textStart"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="143dp"
-                android:layout_height="wrap_content"
-                android:text="descripción"
-                android:textAlignment="textStart"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
+                android:backgroundTint="#FF400C9B"
+                android:text="Editar" />
         </TableRow>
     </TableLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="489dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/titulomaintxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/fechamaintxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/descripcionmaintxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView" />
-        </LinearLayout>
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Button
-            android:id="@+id/btnAdd"
-            android:layout_width="205dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#400C9B"
-            android:text="Agregar"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/btnEditar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FF400C9B"
-            android:text="Editar" />
-    </TableRow>
 
 </LinearLayout>

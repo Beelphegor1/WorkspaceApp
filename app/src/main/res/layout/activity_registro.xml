@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reNombre"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
@@ -15,12 +16,12 @@
         android:layout_marginTop="40dp"
         android:text="Registrarse"
         android:textAlignment="center"
+        android:textColor="#ffffff"
         android:textSize="34sp"
-        android:textStyle="bold"
-        android:textColor="#ffffff"/>
+        android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/ReNombre"
         android:layout_width="352dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -36,7 +37,7 @@
         android:textColorHint="#ECECEC" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/ReEmail"
         android:layout_width="353dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -52,7 +53,7 @@
         android:textColorHint="#ECECEC" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/userpass"
         android:layout_width="353dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -68,7 +69,7 @@
         android:textColorHint="#ECECEC" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/RePassConfirm"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
