@@ -47,7 +47,7 @@
         app:layout_constraintVertical_bias="0.335" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/TaskName"
         android:layout_width="325dp"
         android:layout_height="48dp"
         android:layout_marginTop="124dp"
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/TaskDescription"
         android:layout_width="374dp"
         android:layout_height="239dp"
         android:layout_marginTop="220dp"
@@ -74,10 +74,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        app:layout_constraintTop_toBottomOf="@+id/TaskName" />
 
     <Button
-        android:id="@+id/Addbtn"
+        android:id="@+id/bttnAgregar"
         android:layout_width="270dp"
         android:layout_height="60dp"
         android:layout_marginBottom="16dp"
@@ -87,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText3"
+        app:layout_constraintTop_toBottomOf="@+id/TaskDescription"
         app:layout_constraintVertical_bias="0.555" />
 
     <TextView
@@ -100,7 +100,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        app:layout_constraintTop_toBottomOf="@+id/TaskName" />
 
     <TextView
         android:id="@+id/textView5"
@@ -134,28 +134,28 @@
         android:text="Descripcion de la tarea"
         android:textColor="#ffffff"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText3"
+        app:layout_constraintBottom_toTopOf="@+id/TaskDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:layout_constraintVertical_bias="0.929" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/Fini"
         android:layout_width="89dp"
         android:layout_height="34dp"
         android:layout_marginStart="52dp"
         android:layout_marginTop="20dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/textView12"
-        app:layout_constraintEnd_toStartOf="@+id/textView15"
+        app:layout_constraintEnd_toStartOf="@+id/Ffinal"
         app:layout_constraintHorizontal_bias="0.009"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/FechaI"
         app:layout_constraintVertical_bias="0.095" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/Ffinal"
         android:layout_width="83dp"
         android:layout_height="36dp"
         android:layout_marginTop="20dp"

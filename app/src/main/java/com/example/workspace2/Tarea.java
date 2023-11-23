@@ -1,11 +1,24 @@
 package com.example.workspace2;
-import java.util.Date;
 
-public class Tarea {
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.io.Serializable;
+import java.util.Locale;
+
+public class Tarea implements Serializable {
     private String nombre;
     private String descripcion;
     private Date fechaInicio;
     private Date fechaFin;
+    private String Estado;
+
+    public String getEstado() {
+        return Estado;
+    }
+
+    public void setEstado(String estado) {
+        Estado = estado;
+    }
 
     // Constructor vacío necesario para trabajar con SQLite
     public Tarea() {
@@ -51,5 +64,10 @@ public class Tarea {
 
     public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
+    }
+
+    public String getFechaFormateada() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        return sdf.format(fechaInicio) + "-" + sdf.format(fechaFin);
     }
 }

@@ -8,16 +8,17 @@ import android.view.View;
 import android.widget.Button;
 
 public class Registro extends AppCompatActivity {
-private Button btnLog;
+    private Button btnLog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
-        btnLog= findViewById(R.id.btnLog);
+        btnLog = findViewById(R.id.btnLog);
         btnLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Registro.this,Login.class);
+                Intent intent = new Intent(Registro.this, Login.class);
                 startActivity(intent);
             }
         });

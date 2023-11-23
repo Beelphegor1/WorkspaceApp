@@ -13,23 +13,27 @@ import java.util.List;
 import java.util.Locale;
 
 public class AdapterTask extends RecyclerView.Adapter<AdapterTask.ViewHolder> {
-    private List<Tarea> tareas;
+    private final List<Tarea> tareas;
+    private OnItemClickListener listener;
+    public interface OnItemClickListener {
+        void onItemClick(Tarea tarea);
+    }
 
-    public AdapterTask(List<Tarea> tareas) {
+    public AdapterTask(List<Tarea> tareas, OnItemClickListener listener) {
         this.tareas = tareas;
+        this.listener = listener;
     }
 
     @NonNull
     @Override
+    //infla la vista
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Inflar el diseño del elemento de tarea
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_main, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        // Llenar los datos en las vistas del ViewHolder
         Tarea tarea = tareas.get(position);
         holder.tituloTextView.setText(tarea.getNombre());
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
@@ -37,26 +41,35 @@ public class AdapterTask extends RecyclerView.Adapter<AdapterTask.ViewHolder> {
         String fechaFinStr = sdf.format(tarea.getFechaFin());
         holder.fechaTextView.setText(fechaInicioStr + "-" + fechaFinStr);
         holder.descripcionTextView.setText(tarea.getDescripcion());
+        holder.estadoTextView.setText(tarea.getEstado());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null) {
+                    listener.onItemClick(tarea);
+                }
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        // Retorna la cantidad de elementos en la lista
         return tareas.size();
     }
-
-    // ViewHolder y otros métodos del adaptador...
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tituloTextView;
         TextView fechaTextView;
         TextView descripcionTextView;
+        TextView estadoTextView;
 
         ViewHolder(View itemView) {
             super(itemView);
             tituloTextView = itemView.findViewById(R.id.titulomaintxt);
             fechaTextView = itemView.findViewById(R.id.fechamaintxt);
             descripcionTextView = itemView.findViewById(R.id.descripcionmaintxt);
+            estadoTextView = itemView.findViewById(R.id.estadomaintxt);
         }
     }
 }

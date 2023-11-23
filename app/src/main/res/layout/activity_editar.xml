@@ -8,7 +8,7 @@
     tools:context=".Editar">
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnSaveChanges"
         android:layout_width="127dp"
         android:layout_height="54dp"
         android:layout_marginStart="16dp"
@@ -23,17 +23,17 @@
         tools:ignore="HardcodedText" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnDeleteTask"
         android:layout_width="128dp"
         android:layout_height="53dp"
         android:layout_marginStart="84dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="32dp"
         android:backgroundTint="#FF400C9B"
         android:text="Eliminar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.289"
-        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/btnSaveChanges"
         tools:ignore="HardcodedText" />
 
     <Spinner
@@ -78,7 +78,7 @@
         tools:ignore="HardcodedText" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerViewEditar"
         android:layout_width="412dp"
         android:layout_height="230dp"
         app:layout_constraintBottom_toTopOf="@+id/Estado"
@@ -118,7 +118,7 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <EditText
-        android:id="@+id/editTextText4"
+        android:id="@+id/newdescriptiontxt"
         android:layout_width="386dp"
         android:layout_height="87dp"
         android:layout_marginBottom="44dp"
@@ -141,7 +141,7 @@
         android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewEditar" />
 
     <TextView
         android:id="@+id/textView17"
@@ -153,6 +153,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
+        app:layout_constraintTop_toBottomOf="@+id/newdescriptiontxt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

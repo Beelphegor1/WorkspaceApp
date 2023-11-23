@@ -1,4 +1,5 @@
 package com.example.workspace2;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -153,6 +154,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.close();
         return tareas;
     }
+
     public boolean usuarioExiste(String nombre, String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USERS + " WHERE " +
@@ -165,6 +167,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return existe;
     }
+
     public boolean verificarCredenciales(String Email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USERS +
@@ -173,5 +176,37 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return credencialesValidas;
+    }
+
+    public String getColumnUserId() {
+        return COLUMN_USER_ID;
+    }
+    public String getColumnUserName() {
+        return COLUMN_USER_NAME;
+    }
+    public String getTableUsers() {
+        return TABLE_USERS;
+    }
+
+
+    public long obtenerUserId(String nombreUsuario) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        long userId = -1; // Valor predeterminado si no se encuentra el usuario
+
+        // Consulta para obtener el ID del usuario según el nombre de usuario
+        Cursor cursor = db.rawQuery("SELECT " + COLUMN_USER_ID +
+                " FROM " + TABLE_USERS +
+                " WHERE " + COLUMN_USER_NAME + " = ?", new String[]{nombreUsuario});
+
+        if (cursor != null && cursor.moveToFirst()) {
+            userId = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_USER_ID));
+        }
+
+        if (cursor != null) {
+            cursor.close();
+        }
+        db.close();
+
+        return userId;
     }
 }

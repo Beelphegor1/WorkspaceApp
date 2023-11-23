@@ -4,12 +4,13 @@ public class Users {
     private String nombre;
     private String email;
     private String password;
+    private long userId;
 
-    public Users(){
+    public Users() {
 
     }
 
-    public Users(String nombre, String email, String password){
+    public Users(String nombre, String email, String password) {
         this.nombre = nombre;
         this.email = email;
         this.password = password;
@@ -37,5 +38,13 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 }

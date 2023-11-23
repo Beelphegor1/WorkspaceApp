@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,24 +13,26 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterTask.OnItemClickListener{
 
     private List<Tarea> tareas;
     private AdapterTask adapter;
+    private Button btnEditar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Inicializar la lista de tareas (puedes obtenerla de tu base de datos u otro origen)
+        // Se inicializa la lista de tareas
         tareas = new ArrayList<>();
 
-        // Configurar RecyclerView y su adaptador
+        // Configuracion del Recycleview y su adaptador
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new AdapterTask(tareas);
+        adapter = new AdapterTask(tareas, this); // Usar la variable de instancia 'adapter'
         recyclerView.setAdapter(adapter);
+
 
         // Botón para agregar tarea
         Button btnAdd = findViewById(R.id.btnAdd);
@@ -43,14 +44,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        // Botón para editar tarea (puedes implementar la lógica según tus necesidades)
-        Button btnEditar = findViewById(R.id.btnEditar);
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Abre la actividad para editar tarea
                 Intent intent = new Intent(MainActivity.this, Editar.class);
+
+                // Convierte la lista de tareas a un array y pasa el array
+                Tarea[] arrayTareas = tareas.toArray(new Tarea[tareas.size()]);
+                intent.putExtra("ARRAY_TAREAS", arrayTareas);
+
                 startActivity(intent);
             }
         });
@@ -64,5 +66,12 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
 
 
+    }
+
+    @Override
+    public void onItemClick(Tarea tarea) {
+        Intent intent = new Intent(MainActivity.this, Editar.class);
+        intent.putExtra("TAREA_EDITAR", tarea);
+        startActivity(intent);
     }
 }
