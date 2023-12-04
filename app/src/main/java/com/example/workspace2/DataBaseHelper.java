@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.security.PrivateKey;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,54 +14,47 @@ import java.util.Date;
 import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "workspace.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final String TABLE_USERS = "TABLE_USERS";
+    private static final String COLUMN_USER_ID = "USER_ID";
+    private static final String COLUMN_USER_NAME = "USER_NAME";
+    private static final String COLUMN_USER_EMAIL = "Email";
+    private static final String COLUMN_USER_PASSWORD = "PASSWORD";
+    private static final String TABLE_TASKS = "TABLE_TASKS";
+    private static final String COLUMN_TASK_ID = "TASK_ID";
+    private static final String COLUMN_TASK_NAME = "TASK_NAME";
+    private static final String COLUMN_TASK_DESCRIPTION = "TASK_DESCRIPTION";
+    private static final String COLUMN_TASK_STATE = "TASK_STATE";
+    private static final String COLUMN_TASK_START_DATE = "TASK_START_DATE";
+    private static final String COLUMN_TASK_END_DATE = "TASK_END_DATE";
+    private static final String COLUMN_USER_ID_FK = "USER_ID_FK";
 
-    // Tabla de usuarios
-    private static final String TABLE_USERS = "users";
-    private static final String COLUMN_USER_ID = "user_id";
-    private static final String COLUMN_USER_NAME = "user_name";
-    private static final String COLUMN_USER_EMAIL = "user_email";
-    private static final String COLUMN_USER_PASSWORD = "user_password";
 
-    // Tabla de tareas
-    private static final String TABLE_TASKS = "tasks";
-    private static final String COLUMN_TASK_ID = "task_id";
-    private static final String COLUMN_TASK_NAME = "task_name";
-    private static final String COLUMN_TASK_DESCRIPTION = "task_description";
-    private static final String COLUMN_TASK_START_DATE = "task_start_date";
-    private static final String COLUMN_TASK_END_DATE = "task_end_date";
-    private static final String COLUMN_USER_ID_FK = "user_id_fk"; // Nueva columna para la clave externa
+    private static DataBaseHelper instance;
+    //Singleton
+    public static synchronized DataBaseHelper getInstance(Context context) {
+        if (instance == null) {
+            instance = new DataBaseHelper(context.getApplicationContext());
+        }
+        return instance;
+    }
 
     public DataBaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, "worspace.db", null, 1);
     }
-
+    final String TBLUser = "CREATE TABLE  TABLE_USERS ( USER_ID INTEGER PRIMARY KEY AUTOINCREMENT, USER_NAME TEXT, Email TEXT, PASSWORD  TEXT)";
+    final String TBLTask = "CREATE TABLE TABLE_TASKS  ( TASK_ID  INTEGER PRIMARY KEY AUTOINCREMENT, TASK_NAME  TEXT, TASK_DESCRIPTION  TEXT,TASK_STATE BOOLEAN, TASK_START_DATE TEXT, TASK_END_DATE  TEXT, USER_ID_FK INTEGER, FOREIGN KEY( USER_ID_FK ) REFERENCES  TABLE_USERS ( USER_ID ))";
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Crear la tabla de usuarios
-        String createUserTableQuery = "CREATE TABLE " + TABLE_USERS + " (" +
-                COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_USER_NAME + " TEXT, " +
-                COLUMN_USER_EMAIL + " TEXT, " +
-                COLUMN_USER_PASSWORD + " TEXT)";
-        db.execSQL(createUserTableQuery);
 
-        // Crear la tabla de tareas con clave externa
-        String createTaskTableQuery = "CREATE TABLE " + TABLE_TASKS + " (" +
-                COLUMN_TASK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_TASK_NAME + " TEXT, " +
-                COLUMN_TASK_DESCRIPTION + " TEXT, " +
-                COLUMN_TASK_START_DATE + " TEXT, " +
-                COLUMN_TASK_END_DATE + " TEXT, " +
-                COLUMN_USER_ID_FK + " INTEGER, " +
-                "FOREIGN KEY(" + COLUMN_USER_ID_FK + ") REFERENCES " + TABLE_USERS + "(" + COLUMN_USER_ID + "))";
-        db.execSQL(createTaskTableQuery);
+        db.execSQL(TBLUser);
+
+        db.execSQL(TBLTask);
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Manejar la actualización de la base de datos si es necesario
+
     }
 
     // Métodos para gestionar usuarios
@@ -109,12 +103,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_USER_ID_FK, userId);
 
         // Convierte las fechas a formato de texto antes de almacenarlas en la base de datos
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String fechaInicioStr = dateFormat.format(tarea.getFechaInicio());
-        String fechaFinStr = dateFormat.format(tarea.getFechaFin());
+        if (tarea.getFechaInicio() != null && tarea.getFechaFin() != null){
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String fechaInicioStr = dateFormat.format(tarea.getFechaInicio());
+            String fechaFinStr = dateFormat.format(tarea.getFechaFin());
 
-        values.put(COLUMN_TASK_START_DATE, fechaInicioStr);
-        values.put(COLUMN_TASK_END_DATE, fechaFinStr);
+            values.put(COLUMN_TASK_START_DATE, fechaInicioStr);
+            values.put(COLUMN_TASK_END_DATE, fechaFinStr);
+        }
+
 
         long id = db.insert(TABLE_TASKS, null, values);
         db.close();
@@ -154,6 +151,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.close();
         return tareas;
     }
+
 
     public boolean usuarioExiste(String nombre, String email) {
         SQLiteDatabase db = this.getReadableDatabase();

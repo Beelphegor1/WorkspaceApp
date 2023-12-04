@@ -12,64 +12,53 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
-public class AdapterTask extends RecyclerView.Adapter<AdapterTask.ViewHolder> {
-    private final List<Tarea> tareas;
-    private OnItemClickListener listener;
+public class AdapterTask extends RecyclerView.Adapter<AdapterTask.TaskViewHolder> {
+
+    private List<Tarea> taskList;
+
+    public AdapterTask(List<Tarea> taskList) {
+        this.taskList = taskList;
+    }
     public interface OnItemClickListener {
         void onItemClick(Tarea tarea);
     }
 
-    public AdapterTask(List<Tarea> tareas, OnItemClickListener listener) {
-        this.tareas = tareas;
-        this.listener = listener;
-    }
-
     @NonNull
     @Override
-    //infla la vista
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_item, parent, false);
-        return new ViewHolder(view);
+        return new TaskViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Tarea tarea = tareas.get(position);
-        holder.tituloTextView.setText(tarea.getNombre());
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        String fechaInicioStr = sdf.format(tarea.getFechaInicio());
-        String fechaFinStr = sdf.format(tarea.getFechaFin());
-        holder.fechaTextView.setText(fechaInicioStr + "-" + fechaFinStr);
-        holder.descripcionTextView.setText(tarea.getDescripcion());
-        holder.estadoTextView.setText(tarea.getEstado());
+    public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
+        Tarea currentTask = taskList.get(position);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (listener != null) {
-                    listener.onItemClick(tarea);
-                }
-            }
-        });
+        holder.tituloMainTxt.setText(currentTask.getNombre());
+        holder.fechaMainTxt.setText(currentTask.getFechaFormateada());
+        holder.descripcionMainTxt.setText(currentTask.getDescripcion());
+        holder.estadoMainTxt.setText(currentTask.getEstado());
     }
 
     @Override
     public int getItemCount() {
-        return tareas.size();
+        return taskList.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tituloTextView;
-        TextView fechaTextView;
-        TextView descripcionTextView;
-        TextView estadoTextView;
+    public static class TaskViewHolder extends RecyclerView.ViewHolder {
+        TextView tituloMainTxt;
+        TextView fechaMainTxt;
+        TextView descripcionMainTxt;
+        TextView estadoMainTxt;
 
-        ViewHolder(View itemView) {
+        public TaskViewHolder(@NonNull View itemView) {
             super(itemView);
-            tituloTextView = itemView.findViewById(R.id.titulomaintxt);
-            fechaTextView = itemView.findViewById(R.id.fechamaintxt);
-            descripcionTextView = itemView.findViewById(R.id.descripcionmaintxt);
-            estadoTextView = itemView.findViewById(R.id.estadomaintxt);
+            tituloMainTxt = itemView.findViewById(R.id.titulomaintxt);
+            fechaMainTxt = itemView.findViewById(R.id.fechamaintxt);
+            descripcionMainTxt = itemView.findViewById(R.id.descripcionmaintxt);
+            estadoMainTxt = itemView.findViewById(R.id.estadomaintxt);
         }
     }
 }
+
+

@@ -1,3 +1,5 @@
+<!-- task_item_second.xml -->
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -5,10 +7,10 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!--Aquí se le da estructura a las Tareas para el recycleview-->
+    <!-- Estructura para elementos del segundo RecyclerView -->
 
     <TextView
-        android:id="@+id/titulomaintxt"
+        android:id="@+id/tituloSecondTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"
@@ -16,23 +18,12 @@
         android:textColor="#ffffff"/>
 
     <TextView
-        android:id="@+id/fechamaintxt"
+        android:id="@+id/fechaSecondTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:textColor="#ffffff" />
 
-    <TextView
-        android:id="@+id/descripcionmaintxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="#ffffff" />
 
-    <TextView
-        android:id="@+id/estadomaintxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="#FF0000"/>
 </LinearLayout>
+

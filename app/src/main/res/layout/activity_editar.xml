@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,59 +8,21 @@
     android:background="#000000"
     tools:context=".Editar">
 
-    <Button
-        android:id="@+id/btnSaveChanges"
-        android:layout_width="127dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="16dp"
-        android:backgroundTint="#FF400C9B"
-        android:text="Guardar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/Estado"
-        app:layout_constraintHorizontal_bias="0.211"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Estado"
-        app:layout_constraintVertical_bias="0.436"
-        tools:ignore="HardcodedText" />
+    <!-- TextView para "Workspace" -->
 
-    <Button
-        android:id="@+id/btnDeleteTask"
-        android:layout_width="128dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginBottom="32dp"
-        android:backgroundTint="#FF400C9B"
-        android:text="Eliminar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btnSaveChanges"
-        tools:ignore="HardcodedText" />
-
-    <Spinner
-        android:id="@+id/Estado"
-        android:layout_width="212dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="112dp"
-        android:backgroundTint="#ffffff"
-        android:entries="@array/Estado"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
-        app:layout_constraintStart_toStartOf="parent" />
+    <!-- Botón "Volver" -->
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="16dp"
         android:text="Workspace"
         android:textColor="#ffffff"
         android:textColorHint="#ECECEC"
         android:textSize="34sp"
         app:layout_constraintEnd_toStartOf="@+id/btnback1"
-        app:layout_constraintHorizontal_bias="0.696"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
@@ -69,90 +32,147 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:backgroundTint="#FF400C9B"
         android:text="Volver"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.709"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
 
+    <!-- LinearLayout para las tres TextView -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewEditar"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/Titulotxt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:id="@+id/fechatxt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:id="@+id/descripciontxt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewEditar"
-        android:layout_width="412dp"
-        android:layout_height="230dp"
-        app:layout_constraintBottom_toTopOf="@+id/Estado"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:layout_constraintVertical_bias="0.333">
+        app:layout_constraintBottom_toTopOf="@+id/textView16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+    <!-- TextView "Edite el texto" -->
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Edite el texto"
+        android:textColor="#ffffff"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewEditar" />
 
-            <TextView
-                android:id="@+id/Titulotxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#ffffff" />
-
-            <TextView
-                android:id="@+id/fechatxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#ffffff" />
-
-            <TextView
-                android:id="@+id/descripciontxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#ffffff" />
-        </LinearLayout>
-
-    </androidx.recyclerview.widget.RecyclerView>
-
+    <!-- EditText para "Nueva Descripcion" -->
     <EditText
         android:id="@+id/newdescriptiontxt"
-        android:layout_width="386dp"
+        android:layout_width="0dp"
         android:layout_height="87dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="Nueva Descripcion"
         android:inputType="text"
         android:textColor="#ffffff"
         android:textColorHint="#ECECEC"
-        app:layout_constraintBottom_toTopOf="@+id/Estado"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="151dp"
-        android:layout_height="19dp"
-        android:layout_marginTop="20dp"
-        android:text="Edite el texto"
-        android:textColor="#ffffff"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewEditar" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
+    <!-- TextView para "Estado" -->
     <TextView
         android:id="@+id/textView17"
-        android:layout_width="84dp"
+        android:layout_width="0dp"
         android:layout_height="18dp"
         android:layout_marginTop="12dp"
         android:text="Estado"
         android:textColor="#ffffff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newdescriptiontxt" />
+
+    <!-- Spinner para el "Estado" -->
+    <Spinner
+        android:id="@+id/Estado"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#ffffff"
+        android:textColor="#ffffff"
+        android:entries="@array/Estado"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+    <!-- Botón "Guardar" -->
+    <Button
+        android:id="@+id/btnSaveChanges"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#FF400C9B"
+        android:text="Guardar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Estado"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintVertical_bias="0.436"
+        tools:ignore="HardcodedText" />
+
+    <!-- Botón "Eliminar" -->
+    <Button
+        android:id="@+id/btnDeleteTask"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#FF400C9B"
+        android:text="Eliminar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSaveChanges"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

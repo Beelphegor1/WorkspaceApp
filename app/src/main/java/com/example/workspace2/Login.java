@@ -38,8 +38,8 @@ public class Login extends AppCompatActivity {
                     // Autenticación exitosa
                     long userId = obtenerUserIdPorNombreUsuario(username);
 
-                    // Guarda el ID del usuario en UserManager o en otra clase de utilidad
-                    UserManager.setUserId(userId);
+                    // Guarda el ID del usuario en UserManager para su uso en otras activity
+                    Users.setUserId(userId);
 
                     // Inicia la actividad principal
                     Intent intent = new Intent(Login.this, MainActivity.class);
@@ -90,9 +90,6 @@ public class Login extends AppCompatActivity {
 
         return userId;
     }
-
-
-
 
 }
 

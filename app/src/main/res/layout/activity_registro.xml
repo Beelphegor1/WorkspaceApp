@@ -102,7 +102,7 @@
                 android:text="Crear Perfil" />
 
             <Button
-                android:id="@+id/btnLog"
+                android:id="@+id/btnbackMenu"
                 android:layout_width="172dp"
                 android:layout_height="59dp"
                 android:layout_marginLeft="20dp"

@@ -1,73 +1,88 @@
 package com.example.workspace2;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
-
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Editar extends AppCompatActivity implements AdapterTask.OnItemClickListener {
-    private Button btnback1;
+public class Editar extends AppCompatActivity {
+    private Button btnback1, btnSaveChanges, btnDeleteTask;
+    private RecyclerView recyclerView;
+    private AdapterTaskSecond adapter;
     private List<Tarea> tareas;
-    private AdapterTask adapter;
-    private int selectedTaskPosition;
+    private int selectedTaskPosition = RecyclerView.NO_POSITION;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar);
-        btnback1 = findViewById(R.id.btnback1);
 
-        // Obtén la lista de tareas del Intent
+        btnback1 = findViewById(R.id.btnback1);
+        btnSaveChanges = findViewById(R.id.btnSaveChanges);
+        btnDeleteTask = findViewById(R.id.btnDeleteTask);
+
+        recyclerView = findViewById(R.id.recyclerViewEditar);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         Intent intent = getIntent();
         if (intent.hasExtra("ARRAY_TAREAS")) {
             Tarea[] arrayTareas = (Tarea[]) intent.getSerializableExtra("ARRAY_TAREAS");
-            // Convierte el array de nuevo a una lista
-            tareas = Arrays.asList(arrayTareas);
+            tareas = new ArrayList<>(Arrays.asList(arrayTareas));
+        } else {
+            tareas = new ArrayList<>();
         }
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewEditar);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new AdapterTaskSecond(tareas, new AdapterTaskSecond.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                // Manejar la selección de la tarea en el RecyclerView
+                handleTaskSelection(position);
+            }
+        });
 
-        if (tareas != null) {
-            adapter = new AdapterTask(tareas, this);
-            recyclerView.setAdapter(adapter);
-        }
+        recyclerView.setAdapter(adapter);
 
         btnback1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Editar.this, MainActivity.class);
-                startActivity(intent);
+                Intent intent1 = new Intent(Editar.this, MainActivity.class);
+                startActivity(intent1);
             }
         });
 
-        Button btnSaveChanges = findViewById(R.id.btnSaveChanges);
         btnSaveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Guarda los cambios en la tarea seleccionada
                 guardarCambiosEnTarea();
+            }
+        });
+
+        btnDeleteTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                eliminarTareaSeleccionada();
             }
         });
     }
 
+    private void handleTaskSelection(int position) {
+        selectedTaskPosition = position;
+    }
+
     private void guardarCambiosEnTarea() {
         if (selectedTaskPosition != RecyclerView.NO_POSITION) {
-            // Obtener la tarea seleccionada
             Tarea tareaSeleccionada = tareas.get(selectedTaskPosition);
 
-            // Actualizar los datos de la tarea con la nueva descripción y estado
             EditText newDescriptionEditText = findViewById(R.id.newdescriptiontxt);
             String nuevaDescripcion = newDescriptionEditText.getText().toString();
             tareaSeleccionada.setDescripcion(nuevaDescripcion);
@@ -76,47 +91,24 @@ public class Editar extends AppCompatActivity implements AdapterTask.OnItemClick
             String nuevoEstado = estadoSpinner.getSelectedItem().toString();
             tareaSeleccionada.setEstado(nuevoEstado);
 
-            // Notificar al adaptador sobre el cambio en los datos
+            // Actualiza la tarea en la lista
+            tareas.set(selectedTaskPosition, tareaSeleccionada);
+
+            // Notifica al adaptador sobre el cambio
             adapter.notifyItemChanged(selectedTaskPosition);
         }
     }
 
-    public void onItemClick(int position) {
-        // Al hacer clic en un elemento, actualizar la interfaz con los datos de la tarea seleccionada
-        selectedTaskPosition = position;
+    private void eliminarTareaSeleccionada() {
+        if (selectedTaskPosition != RecyclerView.NO_POSITION) {
+            // Elimina la tarea de la lista
+            tareas.remove(selectedTaskPosition);
 
-        // Obtener la tarea seleccionada
-        Tarea tareaSeleccionada = tareas.get(position);
+            // Notifica al adaptador sobre la eliminación
+            adapter.notifyItemRemoved(selectedTaskPosition);
 
-        // Rellenar los elementos de la interfaz con los datos de la tarea seleccionada
-        TextView tituloTextView = findViewById(R.id.Titulotxt);
-        TextView fechaTextView = findViewById(R.id.fechatxt);
-        TextView descripcionTextView = findViewById(R.id.descripciontxt);
-        tituloTextView.setText(tareaSeleccionada.getNombre());
-        fechaTextView.setText(tareaSeleccionada.getFechaFormateada());
-        descripcionTextView.setText(tareaSeleccionada.getDescripcion());
-
-        // Habilitar la edición en los campos relevantes
-        EditText newDescriptionEditText = findViewById(R.id.newdescriptiontxt);
-        newDescriptionEditText.setText(tareaSeleccionada.getDescripcion());
-
-        // Seleccionar el estado actual en el spinner
-        Spinner estadoSpinner = findViewById(R.id.Estado);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Estado, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        estadoSpinner.setAdapter(adapter);
-
-// Obtener el estado actual de la tarea
-        String estadoActual = tareaSeleccionada.getEstado();
-
-// Seleccionar el estado actual en el spinner
-        int estadoActualPosition = adapter.getPosition(estadoActual);
-        estadoSpinner.setSelection(estadoActualPosition);
-
-}
-
-    @Override
-    public void onItemClick(Tarea tarea) {
-
+            // Restablece la posición seleccionada
+            selectedTaskPosition = RecyclerView.NO_POSITION;
+        }
     }
 }

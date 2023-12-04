@@ -1,10 +1,11 @@
 package com.example.workspace2;
 
 public class Users {
+    private static long userId;
     private String nombre;
     private String email;
     private String password;
-    private long userId;
+
 
     public Users() {
 
@@ -40,11 +41,11 @@ public class Users {
         this.password = password;
     }
 
-    public long getUserId() {
+    public static long getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public static void setUserId(long userId) {
+        Users.userId = userId;
     }
 }
